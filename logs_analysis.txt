@@ -1,0 +1,44 @@
+The top three articles are:
+
+ 
+
+   Candidate is jerk, alleges rival - 338647 views
+
+
+
+    Bears love berries, alleges bear - 253801 views
+
+
+ 
+   Bad things gone, say good people - 170098 views
+
+
+
+   
+
+The most popular authors are as follow:
+
+
+
+   Ursula La Multa - 507594 hits
+
+
+
+   Rudolf von Treppenwitz - 423457 hits
+
+
+
+   Anonymous Contributor - 170098 hits
+
+
+
+   Markoff Chaney - 84557 hits
+
+
+
+
+These days more than 1 percent of requests resulted in error:
+
+
+
+   2016-07-17 - 2.31506899455 percent
