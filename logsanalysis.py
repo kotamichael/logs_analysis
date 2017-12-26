@@ -1,9 +1,10 @@
-"""When file run from the command line, all three operations
- are called in order."""
-
 #!/usr/bin/env python3
+
 import psycopg2
 import datetime
+
+"""When file run from the command line,
+all three operations are called in order."""
 
 
 def popular_article():
@@ -50,6 +51,5 @@ def logs_analysis():
     popular_article()
     popular_author()
     error_days()
-
 
 logs_analysis()
