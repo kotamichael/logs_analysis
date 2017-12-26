@@ -51,7 +51,7 @@ This command will load the views directly into the 'news' database.  Alternative
 		GROUP BY time ORDER BY time;
 
 	CREATE VIEW badrqsts AS
-		SELECT time, COUNT(status) AS bad FROM days
+		SELECT time, COUNT(status) AS bad FROM totalrqsts
 		WHERE status = '404 NOT FOUND' GROUP BY time ORDER BY time;
 
 	CREATE VIEW dailyerrors AS
