@@ -1,29 +1,3 @@
-# Logs Analysis Project
-
-This application will answer three questions regarding the newsdata.sql dataset.  
-It utilizes PostgreSQL and psycopg2. It uses three methods: "popular_article"
-(to find the three most popular articles), popular_author (which lists the most
-popular authors, in terms of page views, in descending order), and error_days
-(which calculates on which days more than 1% of requests led to errors).
-
-
-## Getting Started
-
-In order to run this program the user will need to have Python3, Git, Vagrant, and Virtual Box installed.
-In addition, cloning [this github repository](https://github.com/udacity/fullstack-nanodegree-vm) will install files necessay to do the rest.  I've broken down the structure of the program to include several views which allows the logsanalysis.py file to be as readable as possible.
-
-Before creating these views, the user must run their vagrant machine by ```cd```ing into their directory in Git, and issue a ```vagrant up``` command, followed by ```vagrant ssh```.  To load the data, run the command ```psql -d news -f newsdata.sql```.
-
-Afterwards, the user must create the views spoken about before.
-
-Finally, the user must run the python file from the vagrant command line using the command: ```python3 logsanalysis.py```
-
-### Necessary Views:
-
-The easiest way to create these views is by running the command ```psql -d news -f create_ views.sql```
-This command will load the views directly into the 'news' database.  Alternatively, to get a more hands-on experience the user could choose to load these views themselves.  The views follow below.
-
-```sql
 popularthree:
 	CREATE VIEW popularthree AS
 		SELECT (regexp_split_to_array(path, E'/article/'))[2], COUNT(*) AS views FROM log
@@ -73,4 +47,3 @@ dailyerrors:
 baddays:
 	CREATE VIEW baddays AS
 		SELECT time, percent FROM dailyerrors WHERE percent > 1;
-```
