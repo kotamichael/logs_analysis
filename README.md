@@ -55,10 +55,10 @@ days:
 	CREATE VIEW days AS
 		SELECT time ::TIMESTAMP::DATE, status FROM log ORDER BY time;
 
-okrsts:
-	CREATE VIEW okrqsts AS
+totalrqsts:
+	CREATE VIEW totalrqsts AS
 		SELECT time, COUNT(status) AS ok FROM days
-		WHERE status = '200 OK' GROUP BY time ORDER BY time;
+		GROUP BY time ORDER BY time;
 
 badrqsts:
 	CREATE VIEW badrqsts AS
