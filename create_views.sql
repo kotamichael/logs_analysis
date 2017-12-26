@@ -20,11 +20,8 @@
 		SELECT authors.name, popularauthor.articleViews FROM authors, popularauthor
 		WHERE authors.id = popularauthor.author ORDER BY popularauthor.articleViews DESC;
 
-	CREATE VIEW days AS
-		SELECT time ::TIMESTAMP::DATE, status FROM log ORDER BY time;
-
 	CREATE VIEW totalrqsts AS
-		SELECT time, COUNT(status) AS ok FROM days
+		SELECT time ::TIMESTAMP::DATE, COUNT(status) AS all FROM log
 		GROUP BY time ORDER BY time;
 
 	CREATE VIEW badrqsts AS
@@ -32,8 +29,8 @@
 		WHERE status = '404 NOT FOUND' GROUP BY time ORDER BY time;
 
 	CREATE VIEW dailyerrors AS
-		SELECT okrqsts.time, CAST(badrqsts.bad AS FLOAT) / CAST(okrqsts.ok AS FLOAT) * 100 AS percent
-		FROM okrqsts, badrqsts WHERE okrqsts.time = badrqsts.time;
+		SELECT totalkrqsts.time, CAST(badrqsts.bad AS FLOAT) / CAST(totalrqsts.all AS FLOAT) * 100 AS percent
+		FROM totalrqsts, badrqsts WHERE totalrqsts.time = badrqsts.time;
 
 	CREATE VIEW baddays AS
 		SELECT time, percent FROM dailyerrors WHERE percent > 1;
